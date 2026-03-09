@@ -53,13 +53,17 @@ export function createQuantity(value: number): Quantity {
 // Product Factory — composes all smart constructors
 // ============================================================
 
+export function createProductId(): ProductId {
+  return uuidv4() as ProductId
+}
+
 export function createProduct(
   name: ProductName,
   price: PriceNumber,
   stock: StockLevel
 ): Product {
   return {
-    id: uuidv4() as ProductId,
+    id: createProductId(), // ✅ uses named factory now
     name,
     price,
     stock,
